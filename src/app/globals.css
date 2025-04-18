@@ -1,0 +1,208 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-inter: 'Inter', sans-serif;
+  --font-montserrat: 'Montserrat', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-inter);
+  color: white;
+  background: rgb(2, 6, 23);
+}
+
+.font-inter {
+  font-family: var(--font-inter);
+}
+
+.font-montserrat {
+  font-family: var(--font-montserrat);
+}
+
+/* Анимированный градиент */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-background {
+  background-size: 200% 200%;
+  animation: gradient 15s ease infinite;
+}
+
+/* Плавающие частицы */
+.particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  width: var(--size);
+  height: var(--size);
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.6) 0%, rgba(255, 255, 255, 0) 70%);
+  border-radius: 50%;
+  opacity: var(--opacity);
+  animation: float var(--duration) ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-30px) translateX(20px);
+  }
+  50% {
+    transform: translateY(0) translateX(40px);
+  }
+  75% {
+    transform: translateY(30px) translateX(20px);
+  }
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+}
+
+/* Параллакс эффект */
+.parallax-container {
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  perspective: 8px;
+  perspective-origin: 0%;
+  display: flex;
+}
+
+.parallax-layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform-origin: 0 0;
+}
+
+.parallax-layer-back {
+  transform: translateZ(0px) scale(1);
+  z-index: -1;
+  background-position: center;
+  background-size: cover;
+}
+
+.parallax-layer-base {
+  transform: translateZ(0);
+  z-index: 0;
+}
+
+.parallax-layer-front {
+  transform: translateZ(2px) scale(0.75);
+  z-index: 1;
+}
+
+/* Фотогалерея */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 20px;
+}
+
+.photo-item {
+  overflow: hidden;
+  border-radius: 10px;
+  position: relative;
+}
+
+.photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.photo-item:hover img {
+  transform: scale(1.05);
+}
+
+/* Неоновые эффекты */
+.neon-text {
+  text-shadow: 0 0 5px #fff, 0 0 8px #fff, 0 0 15px #fff,
+    0 0 25px #0fa, 0 0 40px #0fa, 0 0 60px #0fa, 0 0 80px #0fa;
+  animation: neon 2s ease-in-out infinite alternate;
+}
+
+@keyframes neon {
+  from {
+    text-shadow: 0 0 5px #fff, 0 0 8px #fff, 0 0 15px #fff,
+      0 0 25px #0fa, 0 0 40px #0fa, 0 0 60px #0fa, 0 0 80px #0fa;
+  }
+  to {
+    text-shadow: 0 0 2px #fff, 0 0 5px #fff, 0 0 8px #fff,
+      0 0 15px #0fa, 0 0 25px #0fa, 0 0 35px #0fa, 0 0 45px #0fa;
+  }
+}
+
+/* Анимация зума */
+.zoom-in {
+  animation: zoomIn 1s forwards;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Анимация появления фото */
+.fade-in-photo:nth-child(odd) {
+  animation: fadeInLeft 0.8s forwards;
+}
+
+.fade-in-photo:nth-child(even) {
+  animation: fadeInRight 0.8s forwards;
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+} 
